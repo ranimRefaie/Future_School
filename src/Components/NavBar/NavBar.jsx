@@ -4,11 +4,18 @@ import logo from "../../assets/logo.svg";
 import MobileNav from "../MobileNav/MobileNav";
 import { IoClose } from "react-icons/io5";
 import { FiAlignJustify } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
-
+  const links = [
+    { id: 1, name: "Home", to: "" },
+    { id: 2, name: "About Us", to: "" },
+    { id: 3, name: "Timetable", to: "" },
+    { id: 4, name: "Contact Us", to: "" },
+    { id: 5, name: "", to: "" },
+  ];
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -35,23 +42,15 @@ const NavBar = () => {
           <img src={logo} alt="" />
         </div>
         <ul className="nav-items flex">
-          <li>
-            <a href="">Home</a>
-          </li>
-          <li>
-            <a href="">About Us</a>
-          </li>
-          <li>
-            <a href="">Calendar</a>
-          </li>
-          <li>
-            <a href="">Contact Us</a>
-          </li>
+          {links.map((item) => (
+            <li key={item.id}>
+              <Link to={item.to}>{item.name}</Link>
+            </li>
+          ))}
         </ul>
-
-        <a href="/Future-School/signIn" className="btn-1">
+        <Link to="/Future-School/signIn" className="btn-1">
           SIGN IN
-        </a>
+        </Link>
 
         <button className="menu-btn" onClick={toggleMenu}>
           <span
