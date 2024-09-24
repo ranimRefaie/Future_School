@@ -25,10 +25,9 @@ const MobileNav = ({ isOpen, toggleMenu }) => {
               </li>
             ))}
           </ul>
-
-          <a href="" className="btn-1">
-            SIGN IN
-          </a>
+          <Link to="/signIn" className="btn-1">
+            SING IN
+          </Link>
         </div>
       </div>
     </div>

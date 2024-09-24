@@ -3,12 +3,12 @@ import Home from "./Pages/Home/Home";
 import Sign from "./Pages/Sign/Sign";
 const router = createBrowserRouter([
   {
-    path: "/Future_School",
+    path: "/",
     element: <Home />,
   },
 
   {
-    path: "/Future_School/signIn",
+    path: "/signIn",
     element: <Sign />,
   },
 ]);
