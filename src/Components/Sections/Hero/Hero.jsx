@@ -8,7 +8,7 @@ import bg_hero from "../../../assets/bg-hero.png";
 import bg_hero_2 from "../../../assets/bg-hero-2.jpg";
 import bg_hero_3 from "../../../assets/bg-hero-3.jpg";
 
-const Hero = () => {
+const Hero = ({ text }) => {
   return (
     <div className="hero">
       <Swiper
@@ -34,7 +34,7 @@ const Hero = () => {
         </SwiperSlide>
       </Swiper>
       <div class="content-hero">
-        <h1>welcome to future typical school</h1>
+        <h1>{text}</h1>
       </div>
       <div className="overlay"></div>
     </div>

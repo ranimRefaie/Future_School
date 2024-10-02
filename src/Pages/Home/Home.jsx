@@ -12,7 +12,7 @@ const Home = () => {
     <div>
       <NavBar />
 
-      <Hero />
+      <Hero text="welcome to future typical school" />
 
       <AboutUs />
       <Faq />

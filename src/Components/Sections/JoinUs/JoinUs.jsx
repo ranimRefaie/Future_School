@@ -3,12 +3,13 @@ import join from "../../../assets/join-us-2.jpg";
 import { Link } from "react-router-dom";
 const JoinUs = () => {
   return (
-    <div className="sec-join-us container flex between item-center">
+    <div className="sec-join-us container flex  item-center">
+      <img src={join} alt="" />
       <div className="join-us flex flex-column gap-5">
         <h3>طلب الانضمام الى المدرسة</h3>
         <div className="flex flex-column gap-3 align-items-end">
           <p>
-            يتم التسجيل في المدرسة من خلال الضغط على الزر أدناه وتعبئبة استمارة
+            يتم التسجيل في المدرسة من خلال الضغط على الزر أدناه وتعبئة استمارة
             الطالب
           </p>
           <Link>أملأ الاستمارة</Link>
@@ -23,8 +24,6 @@ const JoinUs = () => {
           <Link>طلب توظيف</Link>
         </div>
       </div>
-
-      <img src={join} alt="" />
     </div>
   );
 };

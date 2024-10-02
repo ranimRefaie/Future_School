@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const MobileNav = ({ isOpen, toggleMenu }) => {
   const links = [
-    { id: 1, name: "Home", to: "" },
-    { id: 2, name: "About Us", to: "" },
+    { id: 1, name: "Home", to: "/" },
+    { id: 2, name: "About Us", to: "/about-us" },
     { id: 3, name: "Timetable", to: "" },
-    { id: 4, name: "Contact Us", to: "" },
+    { id: 4, name: "Contact Us", to: "/contact-us" },
     { id: 5, name: "", to: "" },
   ];
   return (
@@ -26,7 +26,7 @@ const MobileNav = ({ isOpen, toggleMenu }) => {
             ))}
           </ul>
           <Link to="/signIn" className="btn-1">
-            SING IN
+            SIGN IN
           </Link>
         </div>
       </div>
