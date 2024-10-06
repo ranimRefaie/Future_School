@@ -1,0 +1,34 @@
+.countiner-sidebar {
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    background-color: #010133cc;
+}
+
+.countiner-sidebar nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.countiner-sidebar nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 100px;
+    padding: 0;
+    gap: 20px;
+}
+
+.countiner-sidebar nav ul a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    gap: 5px;
+}

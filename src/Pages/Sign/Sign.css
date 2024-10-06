@@ -51,11 +51,13 @@
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    border-radius: 50px;
 }
 
 .logo-form img {
     width: 100%;
     transform: rotate(180deg);
+    border-radius: 50px;
 }
 
 .container-form form h2 {

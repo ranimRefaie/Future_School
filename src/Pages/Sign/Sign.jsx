@@ -1,5 +1,6 @@
 import "./Sign.css";
 import logo from "../../assets/Rectangle 3.svg";
+import { Link } from "react-router-dom";
 
 const Sign = () => {
   return (
@@ -15,8 +16,7 @@ const Sign = () => {
 
           <label>Password</label>
           <input type="text" />
-
-          <a href="">Sign In</a>
+          <Link to="/dashboard">Sign In</Link>
         </form>
       </div>
     </div>
