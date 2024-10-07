@@ -33,3 +33,20 @@
 .group-btn-table {
     gap: 10px;
 }
+
+.btn-tbl {
+    background-color: #010133cc;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+}
+
+.input-search {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #010133cc;
+}
