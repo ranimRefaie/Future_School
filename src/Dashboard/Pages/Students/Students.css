@@ -1,0 +1,35 @@
+.page-student {
+    margin-left: 20rem;
+    margin-top: 3rem;
+    width: 80%;
+
+}
+
+.page-student h1 {
+    color: #010133cc;
+}
+
+.page-student table {
+    margin-top: 30px;
+    width: 90%;
+}
+
+.page-student table thead tr th,
+.page-student table tbody tr td {
+    padding: 10px 20px;
+}
+
+.page-student table thead {
+    background-color: #010133cc;
+    color: #fff;
+}
+
+.row-table {
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.group-btn-table {
+    gap: 10px;
+}

@@ -6,7 +6,7 @@ export const Sidebar = () => {
   const Item_Sidebar = [
     {
       id: 1,
-      path: "/dashboard",
+      path: "/students",
       name: "Students",
       icon: "",
     },
