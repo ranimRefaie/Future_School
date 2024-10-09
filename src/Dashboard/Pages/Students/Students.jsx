@@ -64,39 +64,34 @@ const Students = () => {
     setShowAddForm(false);
   };
   const handleEdit = (id) => {
-    // Find the student to be edited
     const studentToEdit = data.find((item) => item.id === id);
 
-    // Set the form values with existing data
-    setFormValues({
-      id: studentToEdit.id,
-      username: studentToEdit.username,
-      password: studentToEdit.password,
-      fullName: studentToEdit.fullName,
-      fatherName: studentToEdit.fatherName,
-      motherName: studentToEdit.motherName,
-      class: studentToEdit.class,
-      sex: studentToEdit.sex,
-    });
+    if (studentToEdit) {
+      setFormValues({
+        id: studentToEdit.id,
+        username: studentToEdit.username,
+        password: studentToEdit.password,
+        fullName: studentToEdit.fullName,
+        fatherName: studentToEdit.fatherName,
+        motherName: studentToEdit.motherName,
+        class: studentToEdit.class,
+        sex: studentToEdit.sex,
+      });
 
-    // Set the edit item ID
-    setEditItemId(id);
-
-    // Show the edit form
-    setShowEditForm(true);
+      setEditItemId(id); // Set the ID of the student being edited
+      setShowEditForm(true); // Show edit form
+    }
   };
 
   // Function to handle saving edits
   const handleSaveEdit = () => {
-    // Validate the form values (you might want to add validation here)
-    // ...
-
-    // Update the student in the data array
     setData((prevData) =>
-      prevData.map((item) => (item.id === editItemId ? formValues : item))
+      prevData.map((item) =>
+        item.id === editItemId ? { ...item, ...formValues } : item
+      )
     );
 
-    // Reset the form values
+    // Resetting form values
     setFormValues({
       id: "",
       username: "",
@@ -108,11 +103,8 @@ const Students = () => {
       sex: "",
     });
 
-    // Hide the edit form
-    setShowEditForm(false);
-
-    // Reset the edit item ID
-    setEditItemId(null);
+    setShowEditForm(false); // Hide edit form
+    setEditItemId(null); // Reset the edit item ID
   };
 
   // Function to handle form input changes
@@ -175,57 +167,215 @@ const Students = () => {
           </div>
         </div>
         {showAddForm && (
-          <div className="add-form">
-            <h2>Add New Student</h2>
-            <form>
-              <div>
-                <label htmlFor="id">ID:</label>
-                <input
-                  type="text"
-                  id="id"
-                  name="id"
-                  value={formValues.id}
-                  onChange={handleInputChange}
-                />
+          <div className="popup-overlay">
+            <div className="popup-content">
+              <form className="flex">
+                <div className="group-input">
+                  <label htmlFor="id">ID</label>
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    value={formValues.id}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="group-input">
+                  <label htmlFor="username">UserName</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formValues.username}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formValues.password}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="fullName">Full Name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formValues.fullName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="fatherName">Father Name</label>
+                  <input
+                    type="text"
+                    id="fatherName"
+                    name="fatherName"
+                    value={formValues.fatherName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="motherName">Mother Name</label>
+                  <input
+                    type="text"
+                    id="motherName"
+                    name="motherName"
+                    value={formValues.motherName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="motherName">Class</label>
+                  <input
+                    type="text"
+                    id="class"
+                    name="class"
+                    value={formValues.class}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="sex">Sex</label>
+                  <input
+                    type="text"
+                    id="sex"
+                    name="sex"
+                    value={formValues.sex}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </form>
+              <div className="group-btn-form">
+                <button className="btn-save" type="button" onClick={handleAdd}>
+                  Save
+                </button>
+                <button type="button" onClick={() => setShowAddForm(false)}>
+                  Cancel
+                </button>
               </div>
-              {/* ... other form inputs for username, password, etc. */}
-              <button type="button" onClick={handleAdd}>
-                Save
-              </button>
-              <button type="button" onClick={() => setShowAddForm(false)}>
-                Cancel
-              </button>
-            </form>
+            </div>
           </div>
         )}
 
         {/* Edit Form (conditionally rendered) */}
         {showEditForm && (
-          <div className="edit-form">
-            <h2>Edit Student</h2>
-            <form>
-              <div>
-                <label htmlFor="id">ID:</label>
-                <input
-                  type="text"
-                  id="id"
-                  name="id"
-                  value={formValues.id}
-                  onChange={handleInputChange}
-                  readOnly // Make ID readonly
-                />
+          <div className="popup-overlay">
+            <div className="popup-content">
+              <form className="flex">
+                <div className="group-input">
+                  <label htmlFor="id">ID</label>
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    value={formValues.id}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="group-input">
+                  <label htmlFor="username">UserName</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formValues.username}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formValues.password}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="fullName">Full Name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formValues.fullName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="fatherName">Father Name</label>
+                  <input
+                    type="text"
+                    id="fatherName"
+                    name="fatherName"
+                    value={formValues.fatherName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="motherName">Mother Name</label>
+                  <input
+                    type="text"
+                    id="motherName"
+                    name="motherName"
+                    value={formValues.motherName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="motherName">Class</label>
+                  <input
+                    type="text"
+                    id="class"
+                    name="class"
+                    value={formValues.class}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="group-input">
+                  <label htmlFor="sex">Sex</label>
+                  <input
+                    type="text"
+                    id="sex"
+                    name="sex"
+                    value={formValues.sex}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </form>
+              <div className="group-btn-form">
+                <button
+                  className="btn-save"
+                  type="button"
+                  onClick={handleSaveEdit}
+                >
+                  Update
+                </button>
+                <button type="button" onClick={() => setShowEditForm(false)}>
+                  Cancel
+                </button>
               </div>
-              {/* ... other form inputs for username, password, etc. */}
-              <button type="button" onClick={handleSaveEdit}>
-                Save
-              </button>
-              <button type="button" onClick={() => setShowEditForm(false)}>
-                Cancel
-              </button>
-            </form>
+            </div>
           </div>
         )}
-
         <table>
           <thead>
             <tr>

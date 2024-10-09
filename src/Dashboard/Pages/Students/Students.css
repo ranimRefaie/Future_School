@@ -2,7 +2,7 @@
     margin-left: 20rem;
     margin-top: 3rem;
     width: 80%;
-
+    position: relative;
 }
 
 .page-student h1 {
@@ -49,4 +49,63 @@
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #010133cc;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content form {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.group-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-input input {
+    padding: 5px 5px;
+    margin: 5px 0;
+}
+
+.group-btn-form {
+    display: flex;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.group-btn-form button {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.btn-save {
+
+    color: #fff;
+    background-color: #31bd31;
+    border: none;
+}
+
+.btn-save:hover {
+    background-color: #0fbd0f;
 }
