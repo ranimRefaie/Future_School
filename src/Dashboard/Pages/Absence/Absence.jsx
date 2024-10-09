@@ -1,6 +1,6 @@
+import "../Students/Students";
 import { useState } from "react";
 import { Sidebar } from "../../Components/Sidebar/Sidebar";
-import "./Students.css";
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
 import { MdAdd } from "react-icons/md";
@@ -8,18 +8,12 @@ import { FaRegEdit } from "react-icons/fa";
 
 const initialData = [
   {
-    id: 1,
-    username: "ahmad1234",
-    password: "20232023",
     fullName: "Ahmad Rashad",
-    fatherName: "Sameer",
-    motherName: "Lana",
-    class: "first",
-    sex: "male",
+    absencePattern: "justified ",
+    data: "15/1/2024",
   },
 ];
-
-const Students = () => {
+export const Absence = () => {
   const [data, setData] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(10);
@@ -31,33 +25,17 @@ const Students = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [editItemId, setEditItemId] = useState(null); // Store ID of item being edited
   const [formValues, setFormValues] = useState({
-    id: "",
-    username: "",
-    password: "",
     fullName: "",
-    fatherName: "",
-    motherName: "",
-    class: "",
-    sex: "",
+    absencePattern: "",
+    data: "",
   });
 
   const handleAdd = () => {
-    // Validate the form values (you might want to add validation here)
-    // ...
-
-    // Add the new student to the data array
     setData([...data, formValues]);
-
-    // Reset the form values
     setFormValues({
-      id: "",
-      username: "",
-      password: "",
       fullName: "",
-      fatherName: "",
-      motherName: "",
-      class: "",
-      sex: "",
+      absencePattern: "",
+      data: "",
     });
 
     // Hide the add form
@@ -68,14 +46,9 @@ const Students = () => {
 
     if (studentToEdit) {
       setFormValues({
-        id: studentToEdit.id,
-        username: studentToEdit.username,
-        password: studentToEdit.password,
         fullName: studentToEdit.fullName,
-        fatherName: studentToEdit.fatherName,
-        motherName: studentToEdit.motherName,
-        class: studentToEdit.class,
-        sex: studentToEdit.sex,
+        absencePattern: studentToEdit.absencePattern,
+        data: studentToEdit.data,
       });
 
       setEditItemId(id); // Set the ID of the student being edited
@@ -91,31 +64,18 @@ const Students = () => {
       )
     );
 
-    // Resetting form values
     setFormValues({
-      id: "",
-      username: "",
-      password: "",
       fullName: "",
-      fatherName: "",
-      motherName: "",
-      class: "",
-      sex: "",
     });
 
     setShowEditForm(false); // Hide edit form
     setEditItemId(null); // Reset the edit item ID
   };
 
-  // Function to handle form input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  // ... rest of your code (handleSearch, handleSelectRow, handleDelete, etc.)
-
-  // Calculate pagination data (you already have this)
-  // ...
 
   const handleSelectRow = (id) => {
     setSelectedRows((prev) =>
@@ -139,7 +99,6 @@ const Students = () => {
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
-
   return (
     <div className="flex">
       <Sidebar />
@@ -157,7 +116,7 @@ const Students = () => {
           <div className=" flex item-center" style={{ gap: "10px" }}>
             <span>
               Records {indexOfFirstRow + 1} to{" "}
-              {Math.min(indexOfLastRow, filteredData.length)} of{" "}
+              {Math.min(indexOfLastRow, filteredData.length)} of
               {filteredData.length}
             </span>
             {/* Add button */}
@@ -171,38 +130,6 @@ const Students = () => {
             <div className="popup-content">
               <form className="flex">
                 <div className="group-input">
-                  <label htmlFor="id">ID</label>
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={formValues.id}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="group-input">
-                  <label htmlFor="username">UserName</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={formValues.username}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={formValues.password}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
                   <label htmlFor="fullName">Full Name</label>
                   <input
                     type="text"
@@ -212,49 +139,40 @@ const Students = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-
                 <div className="group-input">
-                  <label htmlFor="fatherName">Father Name</label>
+                  <label htmlFor="fullName">Date</label>
                   <input
-                    type="text"
-                    id="fatherName"
-                    name="fatherName"
-                    value={formValues.fatherName}
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={formValues.fullName}
                     onChange={handleInputChange}
                   />
                 </div>
 
                 <div className="group-input">
-                  <label htmlFor="motherName">Mother Name</label>
-                  <input
-                    type="text"
-                    id="motherName"
-                    name="motherName"
-                    value={formValues.motherName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="motherName">Class</label>
-                  <input
-                    type="text"
-                    id="class"
-                    name="class"
-                    value={formValues.class}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="sex">Sex</label>
-                  <input
-                    type="text"
-                    id="sex"
-                    name="sex"
-                    value={formValues.sex}
-                    onChange={handleInputChange}
-                  />
+                  <label htmlFor="absencePattern">Absence Pattern</label>
+                  <label>
+                    <input
+                      type="radio"
+                      id="absencePattern"
+                      name="absencePattern"
+                      value={formValues.absencePattern}
+                      onChange={handleInputChange}
+                      checked
+                    />
+                    Justified
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      id="absencePattern"
+                      name="absencePattern"
+                      value={formValues.absencePattern}
+                      onChange={handleInputChange}
+                    />
+                    Unjustified
+                  </label>
                 </div>
               </form>
               <div className="group-btn-form">
@@ -269,43 +187,10 @@ const Students = () => {
           </div>
         )}
 
-        {/* Edit Form (conditionally rendered) */}
         {showEditForm && (
           <div className="popup-overlay">
             <div className="popup-content">
               <form className="flex">
-                <div className="group-input">
-                  <label htmlFor="id">ID</label>
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={formValues.id}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="group-input">
-                  <label htmlFor="username">UserName</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={formValues.username}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={formValues.password}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
                 <div className="group-input">
                   <label htmlFor="fullName">Full Name</label>
                   <input
@@ -316,47 +201,24 @@ const Students = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-
                 <div className="group-input">
-                  <label htmlFor="fatherName">Father Name</label>
+                  <label htmlFor="fullName">Date</label>
                   <input
-                    type="text"
-                    id="fatherName"
-                    name="fatherName"
-                    value={formValues.fatherName}
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={formValues.fullName}
                     onChange={handleInputChange}
                   />
                 </div>
 
                 <div className="group-input">
-                  <label htmlFor="motherName">Mother Name</label>
+                  <label htmlFor="fullName">Absence Pattern</label>
                   <input
-                    type="text"
-                    id="motherName"
-                    name="motherName"
-                    value={formValues.motherName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="motherName">Class</label>
-                  <input
-                    type="text"
-                    id="class"
-                    name="class"
-                    value={formValues.class}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="sex">Sex</label>
-                  <input
-                    type="text"
-                    id="sex"
-                    name="sex"
-                    value={formValues.sex}
+                    type="radio"
+                    id="absencePattern"
+                    name="absencePattern"
+                    value={formValues.fullName}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -381,14 +243,9 @@ const Students = () => {
             <tr>
               <th></th>
               <th></th>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Password</th>
               <th>Full Name</th>
-              <th>Father Name</th>
-              <th>Mother Name</th>
-              <th>Class</th>
-              <th>Sex</th>
+              <th>Date</th>
+              <th>Absence Pattern</th>
             </tr>
           </thead>
           <tbody>
@@ -409,14 +266,9 @@ const Students = () => {
                     <FaRegEdit />
                   </button>
                 </td>
-                <td>{row.id}</td>
-                <td>{row.username}</td>
-                <td>{row.password}</td>
                 <td>{row.fullName}</td>
-                <td>{row.fatherName}</td>
-                <td>{row.motherName}</td>
-                <td>{row.class}</td>
-                <td>{row.sex}</td>
+                <td>{row.data}</td>
+                <td>{row.absencePattern}</td>
               </tr>
             ))}
           </tbody>
@@ -454,5 +306,3 @@ const Students = () => {
     </div>
   );
 };
-
-export default Students;

@@ -5,6 +5,7 @@ import { About } from "./Pages/AboutUs/About";
 import { ContactUs } from "./Pages/ContactUs/ContactUs";
 import { Home } from "./Dashboard/Pages/Home/Home";
 import Students from "./Dashboard/Pages/Students/Students";
+import { Absence } from "./Dashboard/Pages/Absence/Absence";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/students",
     element: <Students />,
+  },
+  {
+    path: "/absence",
+    element: <Absence />,
   },
 ]);
 

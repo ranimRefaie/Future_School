@@ -1,7 +1,6 @@
 .page-student {
-    margin-left: 20rem;
-    margin-top: 3rem;
     width: 80%;
+    margin: 3rem 0 3rem 20rem;
     position: relative;
 }
 

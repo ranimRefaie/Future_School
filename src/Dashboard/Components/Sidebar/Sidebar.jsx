@@ -12,7 +12,7 @@ export const Sidebar = () => {
     },
     {
       id: 2,
-      path: "/analytics",
+      path: "/absence",
       name: "Absence",
     },
     {
@@ -37,7 +37,7 @@ export const Sidebar = () => {
     },
     {
       id: 7,
-      path: "/financial-dues",
+      path: "/signIn",
       name: "Logout",
       icon: <CiLogin />,
     },
