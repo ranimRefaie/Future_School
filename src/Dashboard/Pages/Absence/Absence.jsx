@@ -8,9 +8,10 @@ import { FaRegEdit } from "react-icons/fa";
 
 const initialData = [
   {
+    id: "1",
     fullName: "Ahmad Rashad",
     absencePattern: "justified ",
-    data: "15/1/2024",
+    date: "2024-10-01",
   },
 ];
 export const Absence = () => {
@@ -19,26 +20,25 @@ export const Absence = () => {
   const [rowsPerPage] = useState(10);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // State to manage form visibility
   const [showAddForm, setShowAddForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
-  const [editItemId, setEditItemId] = useState(null); // Store ID of item being edited
+  const [editItemId, setEditItemId] = useState(null);
   const [formValues, setFormValues] = useState({
+    id: "",
     fullName: "",
-    absencePattern: "",
-    data: "",
+    absencePattern: "Justified",
+    date: "",
   });
 
   const handleAdd = () => {
     setData([...data, formValues]);
     setFormValues({
+      id: "",
       fullName: "",
-      absencePattern: "",
-      data: "",
+      absencePattern: "Justified",
+      date: "",
     });
 
-    // Hide the add form
     setShowAddForm(false);
   };
   const handleEdit = (id) => {
@@ -48,15 +48,14 @@ export const Absence = () => {
       setFormValues({
         fullName: studentToEdit.fullName,
         absencePattern: studentToEdit.absencePattern,
-        data: studentToEdit.data,
+        date: studentToEdit.data,
       });
 
-      setEditItemId(id); // Set the ID of the student being edited
-      setShowEditForm(true); // Show edit form
+      setEditItemId(id);
+      setShowEditForm(true);
     }
   };
 
-  // Function to handle saving edits
   const handleSaveEdit = () => {
     setData((prevData) =>
       prevData.map((item) =>
@@ -65,11 +64,14 @@ export const Absence = () => {
     );
 
     setFormValues({
+      id: "",
       fullName: "",
+      absencePattern: "",
+      date: "",
     });
 
-    setShowEditForm(false); // Hide edit form
-    setEditItemId(null); // Reset the edit item ID
+    setShowEditForm(false);
+    setEditItemId(null);
   };
 
   const handleInputChange = (event) => {
@@ -119,7 +121,6 @@ export const Absence = () => {
               {Math.min(indexOfLastRow, filteredData.length)} of
               {filteredData.length}
             </span>
-            {/* Add button */}
             <button className="btn-tbl" onClick={() => setShowAddForm(true)}>
               <MdAdd /> Add
             </button>
@@ -140,35 +141,37 @@ export const Absence = () => {
                   />
                 </div>
                 <div className="group-input">
-                  <label htmlFor="fullName">Date</label>
+                  <label htmlFor="date">Date</label>
                   <input
                     type="date"
                     id="date"
                     name="date"
-                    value={formValues.fullName}
+                    value={formValues.date}
                     onChange={handleInputChange}
                   />
                 </div>
 
                 <div className="group-input">
                   <label htmlFor="absencePattern">Absence Pattern</label>
-                  <label>
+                  <label htmlFor="Justified">
                     <input
                       type="radio"
-                      id="absencePattern"
+                      id="Justified"
                       name="absencePattern"
-                      value={formValues.absencePattern}
+                      value="Justified"
+                      checked={formValues.absencePattern === "Justified"}
                       onChange={handleInputChange}
-                      checked
                     />
                     Justified
                   </label>
-                  <label>
+
+                  <label htmlFor="Unjustified">
                     <input
                       type="radio"
-                      id="absencePattern"
+                      id="Unjustified"
                       name="absencePattern"
-                      value={formValues.absencePattern}
+                      value="Unjustified"
+                      checked={formValues.absencePattern === "Unjustified"}
                       onChange={handleInputChange}
                     />
                     Unjustified
@@ -207,7 +210,7 @@ export const Absence = () => {
                     type="date"
                     id="date"
                     name="date"
-                    value={formValues.fullName}
+                    value={formValues.date}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -267,7 +270,7 @@ export const Absence = () => {
                   </button>
                 </td>
                 <td>{row.fullName}</td>
-                <td>{row.data}</td>
+                <td>{row.date}</td>
                 <td>{row.absencePattern}</td>
               </tr>
             ))}
