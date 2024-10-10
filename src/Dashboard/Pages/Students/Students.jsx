@@ -5,6 +5,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
 import { MdAdd } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
   {
@@ -164,6 +165,11 @@ const Students = () => {
             <button className="btn-tbl" onClick={() => setShowAddForm(true)}>
               <MdAdd /> Add
             </button>
+            {selectedRows.length > 0 && (
+              <button onClick={handleDelete} className="btn-del">
+                <MdOutlineDelete size={25} />
+              </button>
+            )}
           </div>
         </div>
         {showAddForm && (
@@ -421,9 +427,7 @@ const Students = () => {
             ))}
           </tbody>
         </table>
-        {selectedRows.length > 0 && (
-          <button onClick={handleDelete}>Delete Selected</button>
-        )}
+
         <div className="row-table flex">
           <div className="group-btn-table flex">
             <button

@@ -5,6 +5,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
 import { MdAdd } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
   {
@@ -124,121 +125,38 @@ export const Absence = () => {
             <button className="btn-tbl" onClick={() => setShowAddForm(true)}>
               <MdAdd /> Add
             </button>
+            {selectedRows.length > 0 && (
+              <button onClick={handleDelete} className="btn-del">
+                <MdOutlineDelete size={25} />
+              </button>
+            )}
           </div>
         </div>
         {showAddForm && (
           <div className="popup-overlay">
-            <div className="popup-content">
-              <form className="flex">
-                <div className="group-input">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formValues.fullName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="group-input">
-                  <label htmlFor="date">Date</label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formValues.date}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="absencePattern">Absence Pattern</label>
-                  <label htmlFor="Justified">
-                    <input
-                      type="radio"
-                      id="Justified"
-                      name="absencePattern"
-                      value="Justified"
-                      checked={formValues.absencePattern === "Justified"}
-                      onChange={handleInputChange}
-                    />
-                    Justified
-                  </label>
-
-                  <label htmlFor="Unjustified">
-                    <input
-                      type="radio"
-                      id="Unjustified"
-                      name="absencePattern"
-                      value="Unjustified"
-                      checked={formValues.absencePattern === "Unjustified"}
-                      onChange={handleInputChange}
-                    />
-                    Unjustified
-                  </label>
-                </div>
-              </form>
-              <div className="group-btn-form">
-                <button className="btn-save" type="button" onClick={handleAdd}>
-                  Save
-                </button>
-                <button type="button" onClick={() => setShowAddForm(false)}>
-                  Cancel
-                </button>
-              </div>
-            </div>
+            <PopUp
+              fun={handleInputChange}
+              value_1={formValues.fullName}
+              value_2={formValues.date}
+              value_3={formValues.absencePattern === "Justified"}
+              value_4={formValues.absencePattern === "Unjustified"}
+              click_1={handleAdd}
+              click_2={() => setShowAddForm(false)}
+            />
           </div>
         )}
 
         {showEditForm && (
           <div className="popup-overlay">
-            <div className="popup-content">
-              <form className="flex">
-                <div className="group-input">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formValues.fullName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="group-input">
-                  <label htmlFor="fullName">Date</label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formValues.date}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="group-input">
-                  <label htmlFor="fullName">Absence Pattern</label>
-                  <input
-                    type="radio"
-                    id="absencePattern"
-                    name="absencePattern"
-                    value={formValues.fullName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </form>
-              <div className="group-btn-form">
-                <button
-                  className="btn-save"
-                  type="button"
-                  onClick={handleSaveEdit}
-                >
-                  Update
-                </button>
-                <button type="button" onClick={() => setShowEditForm(false)}>
-                  Cancel
-                </button>
-              </div>
-            </div>
+            <PopUp
+              fun={handleInputChange}
+              value_1={formValues.fullName}
+              value_2={formValues.date}
+              value_3={formValues.absencePattern === "Justified"}
+              value_4={formValues.absencePattern === "Unjustified"}
+              click_1={handleSaveEdit}
+              click_2={() => setShowEditForm(false)}
+            />
           </div>
         )}
         <table>
@@ -276,9 +194,7 @@ export const Absence = () => {
             ))}
           </tbody>
         </table>
-        {selectedRows.length > 0 && (
-          <button onClick={handleDelete}>Delete Selected</button>
-        )}
+
         <div className="row-table flex">
           <div className="group-btn-table flex">
             <button
@@ -305,6 +221,81 @@ export const Absence = () => {
             Page {currentPage} of {Math.ceil(filteredData.length / rowsPerPage)}
           </span>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const PopUp = ({
+  fun,
+  value_1,
+  value_2,
+  value_3,
+  value_4,
+  click_1,
+  click_2,
+}) => {
+  // const dataInput=[{id:1,name:'Full Name', nameInput:'fullName',type:'text',value:{value_1}},
+  // {id:1,name:'Date', nameInput:'date',type:'date',value:{value_2}},
+  // {id:1,name:'Absence Pattern', nameInput:'absencePattern',type:'radio',value:{value_3}}]
+  return (
+    <div className="popup-content">
+      <form className="flex">
+        <div className="group-input">
+          <label htmlFor="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            value={value_1}
+            onChange={fun}
+          />
+        </div>
+        <div className="group-input">
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={value_2}
+            onChange={fun}
+          />
+        </div>
+
+        <div className="group-input">
+          <label htmlFor="absencePattern">Absence Pattern</label>
+          <label htmlFor="Justified">
+            <input
+              type="radio"
+              id="Justified"
+              name="absencePattern"
+              value="Justified"
+              checked={value_3}
+              onChange={fun}
+            />
+            Justified
+          </label>
+
+          <label htmlFor="Unjustified">
+            <input
+              type="radio"
+              id="Unjustified"
+              name="absencePattern"
+              value="Unjustified"
+              checked={value_4}
+              onChange={fun}
+            />
+            Unjustified
+          </label>
+        </div>
+      </form>
+      <div className="group-btn-form">
+        <button className="btn-save" type="button" onClick={click_1}>
+          Save
+        </button>
+        <button type="button" onClick={click_2}>
+          Cancel
+        </button>
       </div>
     </div>
   );

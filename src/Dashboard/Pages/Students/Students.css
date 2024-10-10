@@ -108,3 +108,9 @@
 .btn-save:hover {
     background-color: #0fbd0f;
 }
+
+.btn-del {
+    background-color: transparent;
+    color: rgb(209, 44, 44);
+    border: none;
+}
