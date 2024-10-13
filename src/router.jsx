@@ -7,6 +7,9 @@ import { Home } from "./Dashboard/Pages/Home/Home";
 import Students from "./Dashboard/Pages/Students/Students";
 import { Absence } from "./Dashboard/Pages/Absence/Absence";
 import { Quizzes } from "./Dashboard/Pages/Quizzes/Quizzes";
+import { Tests } from "./Dashboard/Pages/Tests/Tests";
+import { LatestNews } from "./Dashboard/Pages/LatestNews/LatestNews";
+import { Behavioral } from "./Dashboard/Pages/Behavioral/Behavioral";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,8 +42,20 @@ const router = createBrowserRouter([
     element: <Absence />,
   },
   {
-    path: "/Quizzes",
+    path: "/quizzes",
     element: <Quizzes />,
+  },
+  {
+    path: "/tests",
+    element: <Tests/>
+  },
+  {
+    path: "/latest-news",
+    element: <LatestNews/>
+  },
+  {
+    path: "/behavioral",
+    element: <Behavioral/>
   },
 ]);
 

@@ -17,22 +17,22 @@ export const Sidebar = () => {
     },
     {
       id: 3,
-      path: "/Quizzes",
+      path: "/quizzes",
       name: "Quizzes",
     },
     {
       id: 4,
-      path: "/stand-up",
+      path: "/tests",
       name: "Tests",
     },
     {
       id: 5,
-      path: "/financial-dues",
-      name: "Behavioral",
+      path: "/behavioral",
+      name: "Behavioral Notes",
     },
     {
       id: 6,
-      path: "/financial-dues",
+      path: "/latest-news",
       name: "Latest news",
     },
     {

@@ -253,9 +253,8 @@ const PopUp = ({
   click_1,
   click_2,
 }) => {
-  // const dataInput=[{id:1,name:'Full Name', nameInput:'fullName',type:'text',value:{value_1}},
-  // {id:1,name:'Date', nameInput:'date',type:'date',value:{value_2}},
-  // {id:1,name:'Absence Pattern', nameInput:'absencePattern',type:'radio',value:{value_3}}]
+  
+  
   return (
     <div className="popup-content">
       <form className="flex">
@@ -270,41 +269,53 @@ const PopUp = ({
           />
         </div>
         <div className="group-input">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="quizName">	Quiz Name</label>
           <input
-            type="date"
-            id="date"
-            name="date"
+            type="text"
+            id="quizName"
+            name="quizName"
             value={value_2}
+            onChange={fun}
+          />
+        </div>
+        <div className="group-input">
+          <label htmlFor="subject">Select Subject</label>
+          <select
+            id="subject"
+            name="subject"
+            value={value_3}
+            onChange={fun}
+          >
+            <option value=""></option>
+            <option value="Math">Math</option>
+            <option value="Physics">Physics</option>
+            <option value="Biology">Sciences</option>
+            <option value="Biology">Islamic</option>
+            <option value="Biology">Computer</option>
+
+          </select>
+        </div>
+
+        <div className="group-input">
+          <label htmlFor="score">Score</label>
+          <input
+            type="text"
+            id="score"
+            name="score"
+            value={value_4}
             onChange={fun}
           />
         </div>
 
         <div className="group-input">
-          <label htmlFor="absencePattern">Absence Pattern</label>
-          <label htmlFor="Justified">
-            <input
-              type="radio"
-              id="Justified"
-              name="absencePattern"
-              value="Justified"
-              checked={value_3}
-              onChange={fun}
-            />
-            Justified
-          </label>
-
-          <label htmlFor="Unjustified">
-            <input
-              type="radio"
-              id="Unjustified"
-              name="absencePattern"
-              value="Unjustified"
-              checked={value_4}
-              onChange={fun}
-            />
-            Unjustified
-          </label>
+          <label htmlFor="maxScore">Max Score</label>
+          <input
+            type="text"
+            id="maxScore"
+            name="maxScore"
+            value={value_5}
+            onChange={fun}
+          />
         </div>
       </form>
       <div className="group-btn-form">
