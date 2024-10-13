@@ -17,7 +17,7 @@ export const Sidebar = () => {
     },
     {
       id: 3,
-      path: "/projects",
+      path: "/Quizzes",
       name: "Quizzes",
     },
     {

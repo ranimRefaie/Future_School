@@ -6,6 +6,7 @@ import { ContactUs } from "./Pages/ContactUs/ContactUs";
 import { Home } from "./Dashboard/Pages/Home/Home";
 import Students from "./Dashboard/Pages/Students/Students";
 import { Absence } from "./Dashboard/Pages/Absence/Absence";
+import { Quizzes } from "./Dashboard/Pages/Quizzes/Quizzes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/absence",
     element: <Absence />,
+  },
+  {
+    path: "/Quizzes",
+    element: <Quizzes />,
   },
 ]);
 
