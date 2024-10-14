@@ -9,7 +9,7 @@ import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
   {
-    id: "1",
+    id: 1,
     fullName: "Ahmad Rashad",
     quizName: "",
     subject: "",
@@ -27,8 +27,8 @@ export const Quizzes = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
   const [formValues, setFormValues] = useState({
-    id: "1",
-    fullName: "Ahmad Rashad",
+    id: {},
+    fullName: "",
     quizName: "",
     subject: "",
     score: "",
@@ -38,8 +38,8 @@ export const Quizzes = () => {
   const handleAdd = () => {
     setData([...data, formValues]);
     setFormValues({
-      id: "1",
-      fullName: "Ahmad Rashad",
+      id: {},
+      fullName: "",
       quizName: "",
       subject: "",
       score: "",
@@ -74,8 +74,8 @@ export const Quizzes = () => {
     );
 
     setFormValues({
-      id: "1",
-      fullName: "Ahmad Rashad",
+      id: {},
+      fullName: "",
       quizName: "",
       subject: "",
       score: "",

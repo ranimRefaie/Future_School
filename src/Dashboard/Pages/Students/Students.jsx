@@ -17,6 +17,7 @@ const initialData = [
     motherName: "Lana",
     class: "first",
     sex: "male",
+    phone:'0912345678'
   },
 ];
 
@@ -32,7 +33,7 @@ const Students = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [editItemId, setEditItemId] = useState(null); // Store ID of item being edited
   const [formValues, setFormValues] = useState({
-    id: "",
+    id: {},
     username: "",
     password: "",
     fullName: "",
@@ -40,6 +41,7 @@ const Students = () => {
     motherName: "",
     class: "",
     sex: "",
+    phone:''
   });
 
   const handleAdd = () => {
@@ -51,7 +53,7 @@ const Students = () => {
 
     // Reset the form values
     setFormValues({
-      id: "",
+      id: {},
       username: "",
       password: "",
       fullName: "",
@@ -59,6 +61,7 @@ const Students = () => {
       motherName: "",
       class: "",
       sex: "",
+      phone:''
     });
 
     // Hide the add form
@@ -77,6 +80,7 @@ const Students = () => {
         motherName: studentToEdit.motherName,
         class: studentToEdit.class,
         sex: studentToEdit.sex,
+        phone:studentToEdit.phone
       });
 
       setEditItemId(id); // Set the ID of the student being edited
@@ -94,7 +98,7 @@ const Students = () => {
 
     // Resetting form values
     setFormValues({
-      id: "",
+      id: {},
       username: "",
       password: "",
       fullName: "",
@@ -102,6 +106,7 @@ const Students = () => {
       motherName: "",
       class: "",
       sex: "",
+      phone:''
     });
 
     setShowEditForm(false); // Hide edit form
@@ -176,16 +181,7 @@ const Students = () => {
           <div className="popup-overlay">
             <div className="popup-content">
               <form className="flex">
-                <div className="group-input">
-                  <label htmlFor="id">ID</label>
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={formValues.id}
-                    onChange={handleInputChange}
-                  />
-                </div>
+               
                 <div className="group-input">
                   <label htmlFor="username">UserName</label>
                   <input
@@ -259,6 +255,16 @@ const Students = () => {
                     id="sex"
                     name="sex"
                     value={formValues.sex}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="group-input">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formValues.phone}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -281,16 +287,6 @@ const Students = () => {
             <div className="popup-content">
               <form className="flex">
                 <div className="group-input">
-                  <label htmlFor="id">ID</label>
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={formValues.id}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="group-input">
                   <label htmlFor="username">UserName</label>
                   <input
                     type="text"
@@ -363,6 +359,16 @@ const Students = () => {
                     id="sex"
                     name="sex"
                     value={formValues.sex}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="group-input">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formValues.phone}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -387,7 +393,6 @@ const Students = () => {
             <tr>
               <th></th>
               <th></th>
-              <th>ID</th>
               <th>Username</th>
               <th>Password</th>
               <th>Full Name</th>
@@ -395,6 +400,7 @@ const Students = () => {
               <th>Mother Name</th>
               <th>Class</th>
               <th>Sex</th>
+              <th>Phone Number</th>
             </tr>
           </thead>
           <tbody>
@@ -415,7 +421,7 @@ const Students = () => {
                     <FaRegEdit />
                   </button>
                 </td>
-                <td>{row.id}</td>
+                
                 <td>{row.username}</td>
                 <td>{row.password}</td>
                 <td>{row.fullName}</td>
@@ -423,6 +429,7 @@ const Students = () => {
                 <td>{row.motherName}</td>
                 <td>{row.class}</td>
                 <td>{row.sex}</td>
+                <td>{row.phone}</td>
               </tr>
             ))}
           </tbody>

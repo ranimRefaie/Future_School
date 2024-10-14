@@ -9,11 +9,11 @@ import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
     {
-      id: "1",
+      id: 1,
       fullName: "Ahmad Rashad",
-      quizName: "",
+      testName: "",
       subject: "",
-      score: "",
+      mark: "",
       totalMark: "",
     },
   ];
@@ -27,8 +27,8 @@ export const Tests = () => {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editItemId, setEditItemId] = useState(null);
     const [formValues, setFormValues] = useState({
-      id: "1",
-      fullName: "Ahmad Rashad",
+      id: {},
+      fullName: "",
       testName: "",
       subject: "",
       mark: "",
@@ -38,8 +38,8 @@ export const Tests = () => {
     const handleAdd = () => {
       setData([...data, formValues]);
       setFormValues({
-        id: "1",
-        fullName: "Ahmad Rashad",
+        id: {},
+        fullName: "",
         testName: "",
         subject: "",
         mark: "",
@@ -74,8 +74,8 @@ export const Tests = () => {
       );
   
       setFormValues({
-        id: "1",
-        fullName: "Ahmad Rashad",
+        id: {},
+        fullName: "",
         testName: "",
         subject: "",
         mark: "",
@@ -163,9 +163,9 @@ export const Tests = () => {
               <PopUp
                 fun={handleInputChange}
                 value_1={formValues.fullName}
-                value_2={formValues.quizName}
+                value_2={formValues.testName}
                 value_3={formValues.subject}
-                value_4={formValues.score}
+                value_4={formValues.mark}
                 value_5={formValues.totalMark}
                 click_1={handleSaveEdit}
                 click_2={() => setShowEditForm(false)}
@@ -203,9 +203,9 @@ export const Tests = () => {
                     </button>
                   </td>
                   <td>{row.fullName}</td>
-                  <td>{row.quizName}</td>
+                  <td>{row.testName}</td>
                   <td>{row.subject}</td>
-                  <td>{row.score}</td>
+                  <td>{row.mark}</td>
                   <td>{row.totalMark}</td>
                 </tr>
               ))}
@@ -269,11 +269,11 @@ export const Tests = () => {
             />
           </div>
           <div className="group-input">
-            <label htmlFor="quizName">	Test Name</label>
+            <label htmlFor="testName">	Test Name</label>
             <input
               type="text"
-              id="quizName"
-              name="quizName"
+              id="testName"
+              name="testName"
               value={value_2}
               onChange={fun}
             />
@@ -297,11 +297,11 @@ export const Tests = () => {
           </div>
   
           <div className="group-input">
-            <label htmlFor="score">Mark</label>
+            <label htmlFor="mark">Mark</label>
             <input
               type="text"
-              id="score"
-              name="score"
+              id="mark"
+              name="mark"
               value={value_4}
               onChange={fun}
             />

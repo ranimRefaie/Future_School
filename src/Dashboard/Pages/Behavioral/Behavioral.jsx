@@ -9,7 +9,7 @@ import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
     {
-        id: "1",
+        id: 1,
         fullName: "reem Hefnawi",
         type: "Negative",
         note: "bad behavioral",
@@ -27,7 +27,7 @@ export const Behavioral = () => {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editItemId, setEditItemId] = useState(null);
     const [formValues, setFormValues] = useState({
-        id: "1",
+        id: {},
         fullName: "",
         type: "",
         note: "",
@@ -36,7 +36,7 @@ export const Behavioral = () => {
     const handleAdd = () => {
         setData([...data, formValues]);
         setFormValues({
-            id:"",
+            id: {},
             fullName: "",
             type: "",
             note: "",
@@ -69,7 +69,7 @@ export const Behavioral = () => {
         );
 
         setFormValues({
-            id: "1",
+            id: {},
             fullName: "",
             type: "",
             note: "",

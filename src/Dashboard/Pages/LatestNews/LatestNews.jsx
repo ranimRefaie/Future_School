@@ -9,7 +9,7 @@ import { MdOutlineDelete } from "react-icons/md";
 
 const initialData = [
   {
-    id: "1",
+    id: 1,
     titleNew: "",
     description: "",
     date: "",
@@ -27,7 +27,7 @@ export const LatestNews = () => {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editItemId, setEditItemId] = useState(null);
     const [formValues, setFormValues] = useState({
-        id: "1",
+        id: {},
         titleNew: "",
         description: "",
         date: "",
@@ -37,7 +37,7 @@ export const LatestNews = () => {
     const handleAdd = () => {
       setData([...data, formValues]);
       setFormValues({
-        id: "1",
+        id: "",
     titleNew: "",
     description: "",
     date: "",
@@ -70,7 +70,7 @@ export const LatestNews = () => {
       );
   
       setFormValues({
-        id: "1",
+        id:'' ,
         titleNew: "",
         description: "",
         date: "",
